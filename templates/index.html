@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Football Teams Head-to-Head</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Football Teams Head-to-Head</h1>
+        <form method="post">
+            <div class="form-group">
+                <label for="competition">Select the competition:</label>
+                <div class="custom-select">
+                    <select name="competition" id="competition">
+                        <option value="" disabled selected>Select Competition</option>
+                        <option value="premier">Premier League</option>
+                        <option value="championship">Championship</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="team1">Select the first team:</label>
+                <div class="custom-select">
+                    <select name="team1" id="team1">
+                        <option value="" disabled selected>Select Team</option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="team2">Select the second team:</label>
+                <div class="custom-select">
+                    <select name="team2" id="team2">
+                        <option value="" disabled selected>Select Team</option>
+                    </select>
+                </div>
+            </div>
+            <input type="submit" value="Submit" class="btn">
+        </form>
+    </div>
+</body>
+</html>

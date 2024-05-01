@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Head-to-Head Results</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="result-container">
+        <h1>Head-to-Head Results: {{ team1 }} vs {{ team2 }}</h1>
+        <a href="{{ url_for('index') }}" class="back-button"><i class="fas fa-arrow-left"></i> Back</a>
+        <h2>Overall Results</h2>
+        <p>{{ team1 }} wins: {{ team1_wins }}</p>
+        <p>{{ team2 }} wins: {{ team2_wins }}</p>
+        <p>Draws: {{ draws }}</p>
+
+        <h2>Overview</h2>
+        {% for stat, team1_value, team2_value in zip(team1_stats.keys(), team1_stats.values(), team2_stats.values()) %}
+            <div class="stat-table">
+                <div class="team-name">{{ team1 }}</div>
+                <div class="stat-title">{{ stat }}</div>
+                <div class="team-name">{{ team2 }}</div>
+            </div>
+            <div class="stat-table">
+                <div class="stat-value">{{team1_value}}</div>
+                <div></div>
+                <div class="stat-value">{{team2_value}}</div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="match-history">
+        <div class="match-history-container">
+            <div class="match-history-header">
+                <div class="match-history-title">Match History</div>
+                <div class="match-history-count">{{ matches|length }} matches</div>
+            </div>
+            <ul>
+                {% for match in matches %}
+                <li>
+                    <div class="match-details">
+                        {{ match['HomeTeam'] }} {{ match['FTHG'] }} - {{ match['FTAG'] }} {{ match['AwayTeam'] }} ({{ match['FTR'] }})
+                        <span class="match-date">{{ match['Date'] }}</span>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
